@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>商品异常数据分析平台</title>
+
+    <link rel="shortcut icon" href = "/static/image/favicon.ico">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href= "{% static 'css/homepage.css' %}">
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/animsition.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/drop-down.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/qk.css' %}"/>
+		<link rel="stylesheet" href="{% static 'css/xsfx.css' %}">
+
+    <!-- bootstrap -->
+    <!-- global styles -->
+<!--    <link rel="stylesheet" type="text/css" href="{% static 'css/layout.css' %}" />-->
+<!--    <link rel="stylesheet" type="text/css" href="{% static 'css/elements.css' %}" />-->
+<!--    <link rel="stylesheet" type="text/css" href="{% static 'css/icons.css' %}" />-->
+
+    <!-- libraries -->
+
+
+    <!-- this page specific styles -->
+    <link rel="stylesheet" href="{% static 'css/gallery.css' %}" type="text/css" media="screen" />
+
+    <!-- open sans font -->
+<!--    <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />-->
+
+
+
+        <link rel="stylesheet" href="{% static 'css/jedate.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/jquery-labelauty.css' %}" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        body{
+  background-color: #f1f1f1;
+}
+    </style>
+
+</head>
+<body>
+ <nav>
+    <div class="sidebar-top">
+      <span class="shrink-btn">
+        <i class='bx bx-chevron-left'></i>
+      </span>
+      <img src="{% static 'image/uc.101.5aa46e13.jfif' %}" class="logo" alt="" >
+      <h3 class="hide" style="color:white">分析平台</h3>
+    </div>
+
+    <div class="search">
+
+    </div>
+
+    <div class="sidebar-links">
+      <ul>
+        <li>
+        <div class="tab"></div>
+        </li>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="{% url 'index' %}"  data-active="0">
+            <div class="icon">
+              <i class='bx bx-tachometer'></i>
+              <i class='bx bxs-tachometer'></i>
+            </div>
+            <span class="link hide">主页</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="1">
+          <a href="{% url 'train' %}" data-active="1">
+            <div class="icon">
+              <i class='bx bx-folder'></i>
+              <i class='bx bxs-folder'></i>
+            </div>
+            <span class="link hide">数据上传</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="2">
+          <a href="{% url 'show_result' %}" data-active="2">
+            <div class="icon">
+              <i class='bx bx-message-square-detail'></i>
+              <i class='bx bxs-message-square-detail'></i>
+            </div>
+            <span class="link hide">预测结果</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="3">
+          <a href="#" data-active="3" class="active">
+            <div class="icon">
+              <i class='bx bx-bar-chart-square'></i>
+              <i class='bx bxs-bar-chart-square'></i>
+            </div>
+            <span class="link hide">可视图表</span>
+          </a>
+        </li>
+        <li>
+        <div class="tooltip">
+          <span class="show">首页</span>
+          <span>数据上传</span>
+          <span>预测结果</span>
+          <span>可视图表</span>
+        </div>
+        </li>
+      </ul>
+
+      <h4 class="hide"></h4>
+
+      <ul>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="{% url 'result' %}" data-active="4">
+            <div class="icon">
+              <i class='bx bx-notepad'></i>
+              <i class='bx bxs-notepad'></i>
+            </div>
+            <span class="link hide">历史查询</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="1">
+          <a href="{% url 'report' %}" data-active="5">
+            <div class="icon">
+              <i class='bx bx-help-circle'></i>
+              <i class='bx bxs-help-circle'></i>
+            </div>
+            <span class="link hide">反馈</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="2">
+          <a href="{% url 'setting' %}" data-active="6">
+            <div class="icon">
+              <i class='bx bx-cog'></i>
+              <i class='bx bxs-cog'></i>
+            </div>
+            <span class="link hide">设置</span>
+          </a>
+        </li>
+        <li>
+        <div class="tooltip">
+          <span class="show">历史查询</span>
+          <span>反馈</span>
+          <span>设置</span>
+        </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="#" class="account tooltip-element" data-tooltip="0">
+        <i class='bx bx-user'></i>
+      </a>
+      <div class="admin-user tooltip-element" data-tooltip="1">
+        <div class="admin-profile hide">
+          <img src="{% static 'image/face-1.png' %}" >
+          <div class="admin-info">
+            <h3 style="color:white">John Doe</h3>
+            <h5>admin</h5>
+          </div>
+        </div>
+        <a href="{% url 'login' %}" class="log-out">
+          <i class='bx bx-log-out'></i>
+        </a>
+      </div>
+      <div class="tooltip">
+        <span class="show">John</span>
+        <span>退出登录</span>
+      </div>
+    </div>
+  </nav>
+
+
+  <main>
+      <script src="{% static 'js/jquery-latest.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+   	<!-- <div id="jfhu" class="data_wrap" style="background: #efeff5; width: 1020px; padding: 10px; overflow: hidden;"> -->
+		    <div class="animsition">
+<!--				<div class="xsfx_tips">-->
+<!--					1.互动分析包括互动人次数和互动人数两种分析方式，展示每日互动情况，互动所带来的回购率的分析结果；<br />-->
+<!--					2.互动渠道包含所有互动赚取积分活动方式；-->
+
+<!--					&lt;!&ndash; <i class="fa fa-close"></i> &ndash;&gt;-->
+<!--				</div>-->
+				<div class="my_duxs_time">
+					商品类别：<select id="jf_select">
+					<option value="all">全部</option>
+					<option value="jd">文化娱乐</option>
+					<option value="qd">母婴用品</option>
+					<option value="sc">百货食品</option>
+					<option value="tj">服装鞋包</option>
+					<option value="cj">运动户外</option>
+					<option value="sr">家居建材</option>
+					<option value="wb">汽配摩托</option>
+				</select>
+
+				</div>
+				<div class="qk_wrap" style=" margin-bottom: 10px; position: relative;">
+					<div id="hdjf_tips" style=" padding-left: 680px; height: 76px; padding-top: 14px; z-index: 999999; top: 0">
+						<span id="hdjf_hdl">商品价格异常率：8%</span>
+						<span id="hdjf_hgl">商品销量异常率：4%</span>
+						<span id="hdjf_je">商品总量：Math.random() * (119999) + 1234</span>
+						<p id="hdjf_date">2022/1/1</p>
+					</div>
+					<div>
+						<div id="main1" class="my_main" style="width: 1020px;"></div>
+					</div>
+
+				</div>
+				<div class="qk_wrap">
+					<div>
+						<div id="main2" class="my_main" style="width: 505px; height: 300px"></div>
+					</div>
+					<div>
+						<div id="main3" class="my_main" style="width: 505px; height: 300px"></div>
+					</div>
+
+				</div>
+
+
+		    </div>
+
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+		<script src="{% static 'js/select-widget-min.js' %}"></script>
+		<script src="{% static 'js/jquery.animsition.min.js' %}"></script>
+		<script src="{% static 'js/echarts.js' %}"></script>
+
+
+		<script>
+			$(document).ready(function() {
+  			  //初始化切换
+				$(".animsition").animsition({
+
+			    inClass               :   'fade-in-right',
+			    outClass              :   'fade-out',
+			    inDuration            :    1500,
+			    outDuration           :    800,
+			    linkElement           :   '.animsition-link',
+			    // e.g. linkElement   :   'a:not([target="_blank"]):not([href^=#])'
+			    loading               :    true,
+			    loadingParentElement  :   'body', //animsition wrapper element
+			    loadingClass          :   'animsition-loading',
+			    unSupportCss          : [ 'animation-duration',
+			                              '-webkit-animation-duration',
+			                              '-o-animation-duration'
+			                            ],
+			    //"unSupportCss" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
+			    //The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
+
+			    overlay               :   false,
+
+			    overlayClass          :   'animsition-overlay-slide',
+			    overlayParentElement  :   'body'
+			  });
+
+			  //虚拟数据
+			 	var date = ['2021/01','2021/02','2021/03','2021/04','2021/05','2021/06','2021/07','2021/08','2021/09','2021/10',
+				'2021/11','2021/12'];
+
+
+				function my_data(){
+					var data = [];
+					for( var i =0; i<30; i++){
+						data.push(Math.round(Math.random() * (200000) + 100));
+					};
+					return data;
+				}
+			   var num = my_data();
+			   var bl = '30%';
+
+
+
+			     // 路径配置
+		        require.config({
+		            paths: {
+		                echarts: 'http://echarts.baidu.com/build/dist'
+		            }
+		        });
+
+		        // 使用
+		        require(
+		            [
+		                'echarts',
+		                'echarts/chart/bar',
+		                'echarts/chart/line',
+		                'echarts/chart/pie'// 使用柱状图就加载bar模块，按需加载
+		            ],
+		            function (ec) {
+		                // 基于准备好的dom，初始化echarts图表
+		                var myChart = ec.init(document.getElementById('main1'),'macarons');
+		                var myChart2 = ec.init(document.getElementById('main2'),'macarons');
+		                var myChart3 = ec.init(document.getElementById('main3'),'macarons');
+
+						var option ={
+							title:{
+								text : '商品价格异常：142622\n商品销量异常：167029',
+								y: 15,
+								x : 20,
+								borderColor : '#ccc',
+								borderWidth : 1,
+								padding : [8, 15],
+								textStyle : {
+									fontSize : 14
+								}
+							},
+							backgroundColor:'white',
+							tooltip : {
+								trigger: 'axis',
+								formatter : function(data){
+									//console.log(data[0].name)
+									option2.title.subtext = data[0].name;
+									option2.series[0].data = [
+										{value:Math.round(Math.random() * (10000) + 10234), name:'商品销量异常'},
+										{value:Math.round(Math.random() * (9999) + 10234), name:'商品价格异常'},
+										{value:Math.round(Math.random() * (9999) + 10234), name:'商品价格销量异常'}
+									];
+									option3.title.subtext = data[0].name;
+									option3.series[0].data = [
+										{value:Math.round(Math.random() * (9999) + 10234), name:'价格偏高'},
+										{value:Math.round(Math.random() * (9999) + 10234), name:'价格偏低'},
+										{value:Math.round(Math.random() * (9999) + 10234), name:'刷单现象'},
+										{value:Math.round(Math.random() * (9999) + 10234), name:'虚假销售'},
+
+									];
+									myChart2.clear();
+									myChart2.setOption(option2,true);
+									myChart3.clear();
+									myChart3.setOption(option3,true);
+									var str = data[1].name ;
+									str += '</br>' + data[0].seriesName + ':' + data[0].value;
+									str += '</br>' + data[1].seriesName + ':' + data[1].value;
+
+									$('#hdjf_date').html(data[1].name);
+									$('#hdjf_hdl').html('商品价格异常率：6.4%');
+									$('#hdjf_hgl').html('商品销量异常率：7.2%');
+									$('#hdjf_je').html('商品总量：6128755');
+									return str;
+
+								}
+							},
+							legend: {
+								selectedMode : false,
+								data:['商品销量异常','商品价格异常'],
+								y:'20'
+							},
+							grid:{
+								y:'100',
+							},
+							toolbox: {
+								show : false,
+								y:'20',
+								feature : {
+									mark : {show: false},
+									dataView : {show: true, readOnly: false},
+									magicType : {show: true, type: ['line', 'bar']},
+									restore : {show: true},
+									saveAsImage : {show: true}
+								}
+							},
+							dataZoom : {
+								show : true,
+								realtime : true,
+								y: 320,
+								height: 20,
+								start : 70,
+								end : 100
+							},
+							calculable : true,
+							xAxis : [
+								{
+									type : 'category',
+									boundaryGap : true,
+									data : date
+								}
+							],
+							yAxis : [
+								{
+									//name : '积分数',
+									type : 'value'
+								}
+							],
+							series : [
+								{
+									name:'商品销量异常',
+									type:'bar',
+									//stack: '总量',
+									barMaxWidth : 15,
+									itemStyle:{
+										normal:{
+											borderWidth : 3
+										}
+									},
+									data:my_data()
+								},
+								{
+									name:'商品价格异常',
+									type:'bar',
+									//stack: '总量',
+									barMaxWidth : 15,
+									itemStyle:{
+										normal:{
+											borderWidth : 3
+										}
+									},
+									data:my_data()
+								}
+							]
+						};
+						var option2 = {
+							title :{
+								text : '商品异常数据统计',
+								subtext : '2022-1-1',
+								textStyle : {
+									fontSize : 14
+								}
+							},
+							backgroundColor : 'white',
+							tooltip : {
+								trigger: 'item',
+								formatter: "{a} <br/>{b} : {c} ({d}%)"
+							},
+							legend: {
+								show : false,
+								orient : 'vertical',
+								x : 'left',
+								data:['商品销量异常','商品价格异常','商品价格销量异常']
+							},
+							toolbox: {
+								show : false,
+								feature : {
+									mark : {show: false},
+									dataView : {show: true, readOnly: false},
+
+									restore : {show: true},
+									saveAsImage : {show: true}
+								}
+							},
+							calculable : false,
+							series : [
+
+								{
+									name:'商品价格异常',
+									selectedMode: 'single',
+									type:'pie',
+									radius : [65, 85],
+
+									// for funnel
+									x: '60%',
+									width: '35%',
+									funnelAlign: 'left',
+
+									data:[
+										{value:95234, name:'商品销量异常'},
+										{value:152378, name:'商品价格异常'},
+										{value:239887, name:'商品价格销量异常'}
+									]
+								}
+							]
+						};
+
+						var option3 = {
+							title :{
+								text : '商品异常初步判断',
+								subtext : '2022-1-1',
+								textStyle : {
+									fontSize : 14
+								}
+							},
+							backgroundColor : 'white',
+							tooltip : {
+								trigger: 'item',
+								formatter: "{a} <br/>{b} : {c} ({d}%)"
+							},
+							legend: {
+								show : false,
+								orient : 'vertical',
+								x : 'left',
+								data:['价格偏高','价格偏低','刷单现象','虚假销售']
+							},
+							toolbox: {
+								show : false,
+								feature : {
+									mark : {show: false},
+									dataView : {show: true, readOnly: false},
+
+									restore : {show: true},
+									saveAsImage : {show: true}
+								}
+							},
+							calculable : false,
+							series : [
+
+								{
+									name:'级别占比',
+									selectedMode: 'single',
+									type:'pie',
+									radius : [65, 85],
+
+									// for funnel
+									x: '60%',
+									width: '35%',
+									funnelAlign: 'left',
+
+									data:[
+										{value:Math.random() * (4999) + 10234, name:'价格偏高'},
+										{value:Math.random() * (4999) + 10234, name:'价格偏低'},
+										{value:Math.random() * (4999) + 10234, name:'刷单现象'},
+										{value:Math.random() * (4999) + 10234, name:'虚假销售'},
+
+									]
+								}
+							]
+						};
+
+
+			        	var ecConfig = require('echarts/config');
+
+
+		                // 为echarts对象加载数据
+		                myChart.setOption(option);
+		                myChart2.setOption(option2);
+			        	myChart3.setOption(option3);
+
+						//changge事件
+						$('#jf_select').on('change',function () {
+							var val = $(this).val();
+							$('#hdjf_date').html('2017/1/1');
+							$('#hdjf_hdl').html('商品价格异常率：7.4%');
+							$('#hdjf_hgl').html('商品销量异常率：5.9%');
+							$('#hdjf_je').html('商品总量：2118345');
+							option.title.text = '异常商品价格：134588\n异常商品销量：124678';
+							option.title.subtext = '2020/1/1';
+							option.series[0].data = my_data();
+							option.series[1].data = my_data();
+							option2.title.subtext = '2022/4/3';
+							option2.series[0].data = [
+								{value:Math.round(Math.random() * (4999) + 10234), name:'商品销量异常'},
+								{value:Math.round(Math.random() * (4999) + 10234), name:'商品价格异常'},
+								{value:Math.round(Math.random() * (4999) + 10234), name:'商品价格销量异常'}
+							];
+							option3.title.subtext = '2022/4/3';
+							option3.series[0].data = [
+								{value:Math.round(Math.random() * (4999) + 10234), name:'价格偏高'},
+								{value:Math.round(Math.random() * (4999) + 10234), name:'价格偏低'},
+								{value:Math.round(Math.random() * (4999) + 10234), name:'刷单现象'},
+								{value:Math.round(Math.random() * (4999) + 10234), name:'虚假销售'},
+							];
+							myChart.clear();
+							myChart.setOption(option,true);
+							myChart2.clear();
+							myChart2.setOption(option2,true);
+							myChart3.clear();
+							myChart3.setOption(option3,true);
+						})
+		            }
+		        );
+				//关闭提示
+				$('.xsfx_tips  i').on('click',function(){
+					$(this).parent().slideUp();
+				})
+
+			});
+		</script>
+  </main>
+
+  <script src="{% static 'js/homepage.js' %}"></script>
+</body>
+
+</html>
+
+

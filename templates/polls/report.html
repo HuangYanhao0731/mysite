@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商品异常数据分析平台</title>
+  <link rel="shortcut icon" href="/static/image/favicon.ico">
+
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+
+  <style type="text/css">
+body{
+  background-color: #f1f1f1;
+}
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+        .Content-Main{
+            max-width:800px;
+            margin: auto;
+            margin-top: 80px;
+            padding: 20px 30px 20px 30px;
+            font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+            text-shadow: 1px 1px 1px #FFF;
+            border: 1px solid #DDD;
+            border-radius: 5px;
+            color: #888;
+            background: #FFF;
+        }
+        .Content-Main h1{
+            display: block;
+            padding: 0px 0px 10px 40px;
+            margin: -10px -30px 30px -30px;
+            font: 25px "Helvetica Neue", Helvetica, Arial, sans-serif;
+            border-bottom: 1px solid #DADADA;
+            color: #888;
+        }
+        .Content-Main h1>span{
+            display: block;
+            font-size: 11px;
+        }
+        .Content-Main label{
+            display: block;
+            margin: 0px 0px 5px;
+        }
+        .Content-Main label>span{
+            float: center;
+            width: 300px;
+            padding-right: 30px;
+            margin-top: 30px;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: bold;
+            text-align: right;
+            color: #333;
+        }
+        .Content-Main input[type="text"],.Content-Main textarea{
+            width: 100%;
+            height: 80px;
+            padding: 5px 0px 5px 5px;
+            margin-bottom: 16px;
+            margin-right: 6px;
+            margin-top: 2px;
+            line-height: 15px;
+            border-radius: 4px;
+            border: 1px solid #CCC;
+            color: #888;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        }
+        .select1{
+            width: 100%;
+            height: 35px;
+            margin-bottom: 16px;
+            margin-right: 6px;
+            margin-top: 2px;
+            line-height: 15px;
+            padding: 5px 0px 5px 5px;
+            border-radius: 4px;
+            border: 1px solid #CCC;
+            color: #888;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+
+        }
+        .select2{
+            width: 200px;
+            border-radius: 4px;
+            border: 1px solid #CCC;
+            color: #888;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+
+        }
+        .Content-Main textarea{
+            width: 100%;
+            height: 70px;
+            padding: 5px 0px 0px 5px;
+
+        }
+        .button{
+            padding: 10px 25px 10px 25px;
+            margin-left: 40%;
+            border-radius: 4px;
+            border:1px solid #CCC;
+            background: #FFF;
+            color: #333;
+            align:middle;
+        }
+        .button:hover{
+            color: #333;
+            background-color: #EBEBEB;
+            border-color: #ADADAD;
+        }
+    </style>
+
+</head>
+
+<body>
+  <nav>
+    <div class="sidebar-top">
+      <span class="shrink-btn">
+        <i class='bx bx-chevron-left'></i>
+      </span>
+      <img src="{% static 'image/uc.101.5aa46e13.jfif' %}" class="logo" alt="">
+      <h3 class="hide">分析平台</h3>
+    </div>
+
+    <div class="search">
+
+    </div>
+
+    <div class="sidebar-links">
+      <ul>
+        <li>
+        <div class="tab"></div>
+        </li>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="{% url 'index' %}"  data-active="0">
+            <div class="icon">
+              <i class='bx bx-tachometer'></i>
+              <i class='bx bxs-tachometer'></i>
+            </div>
+            <span class="link hide">主页</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="1">
+          <a href="{% url 'train' %}" data-active="1">
+            <div class="icon">
+              <i class='bx bx-folder'></i>
+              <i class='bx bxs-folder'></i>
+            </div>
+            <span class="link hide">数据上传</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="2">
+          <a href="{% url 'show_result' %}" data-active="2">
+            <div class="icon">
+              <i class='bx bx-message-square-detail'></i>
+              <i class='bx bxs-message-square-detail'></i>
+            </div>
+            <span class="link hide">预测结果</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="3">
+          <a href="{% url 'table' %}" data-active="3">
+            <div class="icon">
+              <i class='bx bx-bar-chart-square'></i>
+              <i class='bx bxs-bar-chart-square'></i>
+            </div>
+            <span class="link hide">可视图表</span>
+          </a>
+        </li>
+        <li>
+        <div class="tooltip">
+          <span class="show">首页</span>
+          <span>数据上传</span>
+          <span>预测结果</span>
+          <span>可视图表</span>
+        </div>
+        </li>
+      </ul>
+
+      <h4 class="hide"></h4>
+
+      <ul>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="{% url 'result' %}" data-active="4">
+            <div class="icon">
+              <i class='bx bx-notepad'></i>
+              <i class='bx bxs-notepad'></i>
+            </div>
+            <span class="link hide">历史查询</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="1">
+          <a href="#" data-active="5"  class="active">
+            <div class="icon">
+              <i class='bx bx-help-circle'></i>
+              <i class='bx bxs-help-circle'></i>
+            </div>
+            <span class="link hide">反馈</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="2">
+          <a href="{% url 'setting' %}" data-active="6">
+            <div class="icon">
+              <i class='bx bx-cog'></i>
+              <i class='bx bxs-cog'></i>
+            </div>
+            <span class="link hide">设置</span>
+          </a>
+        </li>
+        <li>
+        <div class="tooltip">
+          <span class="show">历史查询</span>
+          <span>反馈</span>
+          <span>设置</span>
+        </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="#" class="account tooltip-element" data-tooltip="0">
+        <i class='bx bx-user'></i>
+      </a>
+      <div class="admin-user tooltip-element" data-tooltip="1">
+        <div class="admin-profile hide">
+          <img src="{% static 'image/face-1.png' %}" >
+          <div class="admin-info">
+            <h3>John Doe</h3>
+            <h5>admin</h5>
+          </div>
+        </div>
+        <a href="{% url 'login' %}" class="log-out">
+          <i class='bx bx-log-out'></i>
+        </a>
+      </div>
+      <div class="tooltip">
+        <span class="show">John</span>
+        <span>退出登录</span>
+      </div>
+    </div>
+  </nav>
+
+
+  <main>
+
+<div class="Content-Main" >
+    <div class="Content-Main1" align="left">
+        <h1>用户反馈</h1>
+    </div>
+    <form action="" method="post" class="form-report">
+        <label>
+            <span>联系方式:</span>
+            <select name="select2" class="select2">
+                <option value="Email">邮箱</option>
+                <option value="Phone">电话</option>
+                <option value="QQ">QQ</option>
+            </select>
+            <input type="text" placeholder="">
+        </label>
+        <label>
+            <span>反馈信息:</span>
+            <textarea id="mesaage" name="message" placeholder="你遇到了什么困难"></textarea>
+        </label>
+        <label>
+            <span>反馈类型:</span>
+            <select name="select1" class="select1">
+                <option value="Job Inquiry">问题反馈</option>
+                <option value="General Question">使用帮助</option>
+            </select>
+        </label>
+        <label>
+            <input type="button" class="button" value="发送">
+        </label>
+    </form>
+</div>
+
+  </main>
+
+  <script src="{% static 'js/homepage.js' %}"></script>
+</body>
+
+</html>

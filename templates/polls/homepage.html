@@ -1,0 +1,436 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商品异常数据分析平台</title>
+  <link rel="shortcut icon" href="/static/image/favicon.ico">
+
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+
+
+   <!-- bootstrap -->
+<!--    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />-->
+    <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet" />
+<!--    <link href="{% static 'css/bootstrap-overrides.css' %}" type="text/css" rel="stylesheet" />-->
+
+  <!-- libraries -->
+<!--    <link href="{% static 'css/font-awesome.css' %}" type="text/css" rel="stylesheet" />-->
+
+   <!-- open sans font -->
+<!--    <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />-->
+
+<!-- this page specific styles -->
+  <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css" media="screen" />
+
+   <!-- lato font -->
+    <link href='http://fonts.useso.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css' />
+
+    <!-- global styles -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/layout.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/elements.css' %}" />
+<!--    <link rel="stylesheet" type="text/css" href="{% static 'css/icons.css' %}" />-->
+
+
+<style>
+
+show_time {
+width:300px;
+height:100px;
+    color: #FFF;
+}
+</style>
+
+
+
+</head>
+
+<body>
+  <nav>
+    <div class="sidebar-top">
+      <span class="shrink-btn">
+        <i class='bx bx-chevron-left'></i>
+      </span>
+      <img src="{% static 'image/uc.101.5aa46e13.jfif' %}" class="logo" alt="" >
+      <h3 class="hide" style="color:white">分析平台</h3>
+    </div>
+
+    <div class="search">
+      
+    </div>
+
+    <div class="sidebar-links">
+      <ul>
+        <li>
+        <div class="tab"></div>
+        </li>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="#" class="active" data-active="0">
+            <div class="icon">
+              <i class='bx bx-tachometer'></i>
+              <i class='bx bxs-tachometer'></i>
+            </div>
+            <span class="link hide">主页</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="1">
+          <a href="{% url 'train' %}" data-active="1">
+            <div class="icon">
+              <i class='bx bx-folder'></i>
+              <i class='bx bxs-folder'></i>
+            </div>
+            <span class="link hide">数据上传</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="2">
+          <a href="{% url 'show_result' %}" data-active="2">
+            <div class="icon">
+              <i class='bx bx-message-square-detail'></i>
+              <i class='bx bxs-message-square-detail'></i>
+            </div>
+            <span class="link hide">预测结果</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="3">
+          <a href="{% url 'table' %}" data-active="3">
+            <div class="icon">
+              <i class='bx bx-bar-chart-square'></i>
+              <i class='bx bxs-bar-chart-square'></i>
+            </div>
+            <span class="link hide">可视图表</span>
+          </a>
+        </li>
+        <li>
+        <div class="tooltip">
+          <span class="show">首页</span>
+          <span>数据上传</span>
+          <span>预测结果</span>
+          <span>可视图表</span>
+        </div>
+        </li>
+      </ul>
+
+      <h4 class="hide"></h4>
+
+      <ul>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="{% url 'result' %}" data-active="4">
+            <div class="icon">
+              <i class='bx bx-notepad'></i>
+              <i class='bx bxs-notepad'></i>
+            </div>
+            <span class="link hide">历史查询</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="1">
+          <a href="{% url 'report' %}" data-active="5">
+            <div class="icon">
+              <i class='bx bx-help-circle'></i>
+              <i class='bx bxs-help-circle'></i>
+            </div>
+            <span class="link hide">反馈</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="2">
+          <a href="{% url 'setting' %}" data-active="6">
+            <div class="icon">
+              <i class='bx bx-cog'></i>
+              <i class='bx bxs-cog'></i>
+            </div>
+            <span class="link hide">设置</span>
+          </a>
+        </li>
+        <li>
+        <div class="tooltip">
+          <span class="show">历史查询</span>
+          <span>反馈</span>
+          <span>设置</span>
+        </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="#" class="account tooltip-element" data-tooltip="0">
+        <i class='bx bx-user'></i>
+      </a>
+      <div class="admin-user tooltip-element" data-tooltip="1">
+        <div class="admin-profile hide">
+          <img src="{% static 'image/face-1.png' %}" >
+          <div class="admin-info">
+            <h3 style="color:white">John Doe</h3>
+            <h5>admin</h5>
+          </div>
+        </div>
+        <a href="{% url 'login' %}" class="log-out">
+          <i class='bx bx-log-out' ></i>
+        </a>
+      </div>
+      <div class="tooltip">
+        <span class="show">John</span>
+        <span>退出登录</span>
+      </div>
+    </div>
+  </nav>
+
+
+  <main>
+    	<!-- main container -->
+
+        <!-- settings changer -->
+
+        <div class="container-fluid">
+  <!-- upper main stats -->
+            <div id="main-stats">
+                <div class="row-fluid stats-row">
+                    <div class="span3 stat">
+                        <div class="data">
+                            <span class="number">34</span>
+                            浏览量
+                        </div>
+                        <span class="date">今天</span>
+                    </div>
+                    <div class="span3 stat">
+                        <div class="data">
+                            <span class="number">18,152,113</span>
+                            商品条目
+                        </div>
+                        <span class="date">2022.1.26</span>
+                    </div>
+                    <div class="span3 stat">
+                        <div class="data">
+                            <span class="number">4,412,336</span>
+                            新增商品量
+                        </div>
+                        <span class="date">本月</span>
+                    </div>
+                    <div class="span3 stat last">
+                        <div class="data">
+                            <span class="number">816,991</span>
+                            异常商品数据
+                        </div>
+                        <span class="date">过去30天</span>
+                    </div>
+                </div>
+            </div>
+            <!-- end upper main stats -->
+          <p style="margin:50px"></p>
+                <!-- statistics chart built with jQuery Flot -->
+                <div class="row-fluid chart">
+                    <h2>
+                        统计
+                         <div class="btn-group pull-right" style="float:right">
+                            <button class="glow left">天</button>
+                            <button class="glow middle active">月</button>
+                            <button class="glow right">年</button>
+                        </div>
+                    </h2>
+                    <div class="span12">
+                        <div id="statsChart"></div>
+                    </div>
+                </div>
+                <!-- end statistics chart -->
+
+                <!-- UI Elements section -->
+
+<!--                    <h2 style="margin:50px;padding-left:10px">磁盘使用</h2>-->
+<!--                    <div class="span5 knobs">-->
+<!--                        <div class="knob-wrapper">-->
+<!--                            <input type="text" value="56" class="knob second" data-thickness=".3" data-inputcolor="#333" data-fgcolor="#3d88ba" data-bgcolor="#d4ecfd" data-width="150" />-->
+<!--                            <div class="info">-->
+<!--                                <div class="param">-->
+<!--                                    <span class="line blue"></span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="span6 showcase">-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--        </div>-->
+
+  	<!-- scripts -->
+    <script src="{% static 'js/jquery-latest.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui-1.10.2.custom.min.js' %}"></script>
+    <!-- knob -->
+    <script src="{% static 'js/jquery.knob.js' %}"></script>
+    <!-- flot charts -->
+    <script src="{% static 'js/jquery.flot.js' %}"></script>
+    <script src="{% static 'js/jquery.flot.stack.js' %}"></script>
+    <script src="{% static 'js/jquery.flot.resize.js' %}"></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+
+    <script type="text/javascript">
+        $(function () {
+
+            // jQuery Knobs
+            $(".knob").knob();
+
+
+
+            // jQuery UI Sliders
+            $(".slider-sample1").slider({
+                value: 100,
+                min: 1,
+                max: 500
+            });
+            $(".slider-sample2").slider({
+                range: "min",
+                value: 130,
+                min: 1,
+                max: 500
+            });
+            $(".slider-sample3").slider({
+                range: true,
+                min: 0,
+                max: 500,
+                values: [ 40, 170 ],
+            });
+
+
+
+            // jQuery Flot Chart
+            var visits = [[1,0], [2, 0], [3, 0], [4, 0],[5, 0],[6, 281783],[7, 278374],[8, 289643],[9, 223238],[10, 0],[11, 0],[12, 0]];
+            var visitors = [[1, 0], [2, 0], [3, 0], [4, 0],[5, 0],[6, 4503242],[7, 4133206],[8, 4286338],[9, 4412336],[10,0],[11,0],[12, 0]];
+
+            var plot = $.plot($("#statsChart"),
+                [ { data: visits, label: "异常商品数据"},
+                 { data: visitors, label: "商品条目总计" }], {
+                    series: {
+                        lines: { show: true,
+                                lineWidth: 1,
+                                fill: true,
+                                fillColor: { colors: [ { opacity: 0.1 }, { opacity: 0.13 } ] }
+                             },
+                        points: { show: true,
+                                 lineWidth: 2,
+                                 radius: 3
+                             },
+                        shadowSize: 0,
+                        stack: true
+                    },
+                    grid: { hoverable: true,
+                           clickable: true,
+                           tickColor: "#f9f9f9",
+                           borderWidth: 0
+                        },
+                    legend: {
+                            // show: false
+                            labelBoxBorderColor: "#fff"
+                        },
+                    colors: ["#a7b5c5", "#30a0eb"],
+                    xaxis: {
+                        ticks: [[1, "一月"], [2, "二月"], [3, "三月"], [4,"四月"], [5,"五月"], [6,"六月"],
+                               [7,"七月"], [8,"八月"], [9,"九月"], [10,"十月"], [11,"十一月"], [12,"十二月"]],
+                        font: {
+                            size: 12,
+                            family: "Open Sans, Arial",
+                            variant: "small-caps",
+                            color: "#697695"
+                        }
+                    },
+                    yaxis: {
+                        ticks:3,
+                        tickDecimals: 0,
+                        font: {size:12, color: "#9da3a9"}
+                    }
+                 });
+
+            function showTooltip(x, y, contents) {
+                $('<div id="tooltip">' + contents + '</div>').css( {
+                    position: 'absolute',
+                    display: 'none',
+                    top: y - 30,
+                    left: x - 50,
+                    color: "#fff",
+                    padding: '2px 5px',
+                    'border-radius': '6px',
+                    'background-color': '#000',
+                    opacity: 0.80
+                }).appendTo("body").fadeIn(200);
+            }
+
+            var previousPoint = null;
+            $("#statsChart").bind("plothover", function (event, pos, item) {
+                if (item) {
+                    if (previousPoint != item.dataIndex) {
+                        previousPoint = item.dataIndex;
+
+                        $("#tooltip").remove();
+                        var x = item.datapoint[0].toFixed(0),
+                            y = item.datapoint[1].toFixed(0);
+
+                        var month = item.series.xaxis.ticks[item.dataIndex].label;
+
+                        showTooltip(item.pageX, item.pageY,
+                                    month + "的" + item.series.label + ": " + y);
+                    }
+                }
+                else {
+                    $("#tooltip").remove();
+                    previousPoint = null;
+                }
+            });
+        });
+    </script>
+
+<!--<div id="show_time" style="bottom:0;left:0">-->
+<!--<script>-->
+<!--setInterval("fun(show_time)",1);-->
+<!--function fun(timeID){-->
+<!--var date = new Date();  //创建对象-->
+<!--var y = date.getFullYear();     //获取年份-->
+<!--var m =date.getMonth()+1;   //获取月份  返回0-11-->
+<!--var d = date.getDate(); // 获取日-->
+<!--var w = date.getDay();   //获取星期几  返回0-6   (0=星期天)-->
+<!--var ww = ' 星期'+'日一二三四五六'.charAt(new Date().getDay()) ;//星期几-->
+<!--var h = date.getHours();  //时-->
+<!--var minute = date.getMinutes()  //分-->
+<!--var s = date.getSeconds(); //秒-->
+<!--var sss = date.getMilliseconds() ; //毫秒-->
+<!--if(m<10){-->
+<!--m = "0"+m;-->
+<!--}-->
+<!--if(d<10){-->
+<!--d = "0"+d;-->
+<!--}-->
+<!--if(h<10){-->
+<!--h = "0"+h;-->
+<!--}-->
+
+
+<!--if(minute<10){-->
+<!--minute = "0"+minute;-->
+<!--}-->
+
+
+<!--if(s<10){-->
+<!--s = "0"+s;-->
+<!--}-->
+
+
+<!--if(sss<10){-->
+<!--sss = "00"+sss;-->
+<!--}else if(sss<100){-->
+<!--sss = "0"+sss;-->
+<!--}-->
+
+
+<!--document.getElementById(timeID.id).innerHTML =  y+"-"+m+"-"+d+"   "+h+":"+minute+":"+s+"."+sss+"  "+ww;-->
+<!--//document.write(y+"-"+m+"-"+d+"   "+h+":"+minute+":"+s);-->
+<!--  }-->
+<!--</script>-->
+<!--</div>-->
+
+</div>
+
+  </main>
+  <script src="{% static 'js/homepage.js' %}"></script>
+</body>
+
+</html>

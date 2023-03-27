@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+<!--    <meta charset="UTF-8">-->
+ <title>分析平台注册页面</title>
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
+<!--    <link rel="stylesheet" href="style.css">-->
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/layout.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/elements.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/icons.css' %}" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}" />
+<!--    <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />-->
+
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/bootstrap-overrides.css' %}" type="text/css" rel="stylesheet" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+         body{
+  background-color: #f1f1f1;
+}
+    </style>
+</head>
+  <body>
+<br><br><br><br><br><br><br><br><br><br>
+    <div class="row-fluid login-wrapper" style="align:center;text-align: center">
+
+        <div class="box">
+            <div class="content-wrap">
+                <h6>注册</h6>
+                <input class="span12" type="text" placeholder="电子邮箱" />
+                <input class="span12" type="password" placeholder="密码" />
+                <input class="span12" type="password" placeholder=" 确认密码" />
+                <div class="action">
+                    <a class="btn-glow primary signup" href="{% url 'login' %}" onclick=alertTips()>注册</a>
+                     <script>
+                        function alertTips(){
+                        alert('注册成功!');
+                        }
+                     </script>
+                </div>
+            </div>
+        </div>
+        <div>
+            <br>
+            <p>已经有一个账户？</p>
+            <a href="{% url 'login' %}">登录</a>
+        </div>
+
+    </div>
+
+   <script src="{% static 'js/jquery-latest.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商品异常数据分析平台</title>
+  <link rel="shortcut icon" href="/static/image/favicon.ico">
+
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+  <style>
+    body{
+  background-color: #f1f1f1;
+}
+.posirelative {
+    position: relative;
+}
+.select-out-div {
+    width: 160px;
+    overflow: hidden;
+}
+select.m-wrap {
+
+    background-color: #ffffff;
+    background-image: none !important;
+    filter: none !important;
+    border: 1px solid #e5e5e5;
+    outline: none;
+    height: 25px !important;
+    line-height: 25px;
+}
+.select-hide-span {
+    height: 25px;
+    position: absolute;
+    top: 0;
+    border-right: 1px solid #e5e5e5;
+    right: 0;
+    width: 20px!important;
+    z-index: 999;
+}
+.select-show-b {
+    border-color: #888 transparent transparent transparent;
+    border-style: solid;
+    border-width: 5px 4px 0 4px;
+    margin-left: -4px;
+    margin-top: 10px;
+    position: absolute;
+}
+
+
+
+
+.btn{
+  display: block;
+  margin: 30px 0;
+  width: 320px;
+  height: 40px;
+  border: none;
+  background-color: #55a6dc;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  transition: .3s linear;
+}
+
+.btn2:hover{
+  transform: rotateX(-15deg);
+  box-shadow: 0 -10px 10px #55a6dc;
+}
+  </style>
+</head>
+
+
+<body>
+  <nav>
+    <div class="sidebar-top">
+      <span class="shrink-btn">
+        <i class='bx bx-chevron-left'></i>
+      </span>
+      <img src="{% static 'image/uc.101.5aa46e13.jfif' %}" class="logo" alt="">
+      <h3 class="hide">分析平台</h3>
+    </div>
+
+    <div class="search">
+
+    </div>
+
+    <div class="sidebar-links">
+      <ul>
+        <li>
+        <div class="tab"></div>
+        </li>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="{% url 'index' %}"  data-active="0">
+            <div class="icon">
+              <i class='bx bx-tachometer'></i>
+              <i class='bx bxs-tachometer'></i>
+            </div>
+            <span class="link hide">主页</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="1">
+          <a href="{% url 'train' %}" data-active="1">
+            <div class="icon">
+              <i class='bx bx-folder'></i>
+              <i class='bx bxs-folder'></i>
+            </div>
+            <span class="link hide">数据上传</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="2">
+          <a href="{% url 'show_result' %}" data-active="2">
+            <div class="icon">
+              <i class='bx bx-message-square-detail'></i>
+              <i class='bx bxs-message-square-detail'></i>
+            </div>
+            <span class="link hide">预测结果</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="3">
+          <a href="{% url 'table' %}" data-active="3">
+            <div class="icon">
+              <i class='bx bx-bar-chart-square'></i>
+              <i class='bx bxs-bar-chart-square'></i>
+            </div>
+            <span class="link hide">可视图表</span>
+          </a>
+        </li>
+        <li>
+        <div class="tooltip">
+          <span class="show">首页</span>
+          <span>数据上传</span>
+          <span>预测结果</span>
+          <span>可视图表</span>
+        </div>
+        </li>
+      </ul>
+
+      <h4 class="hide"></h4>
+
+      <ul>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="#" data-active="4" class="active">
+            <div class="icon">
+              <i class='bx bx-notepad'></i>
+              <i class='bx bxs-notepad'></i>
+            </div>
+            <span class="link hide">历史查询</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="1">
+          <a href="{% url 'report' %}" data-active="5">
+            <div class="icon">
+              <i class='bx bx-help-circle'></i>
+              <i class='bx bxs-help-circle'></i>
+            </div>
+            <span class="link hide">反馈</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="2">
+          <a href="#" data-active="6" >
+            <div class="icon">
+              <i class='bx bx-cog'></i>
+              <i class='bx bxs-cog'></i>
+            </div>
+            <span class="link hide">设置</span>
+          </a>
+        </li>
+        <li>
+        <div class="tooltip">
+          <span class="show">历史查询</span>
+          <span>反馈</span>
+          <span>设置</span>
+        </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="#" class="account tooltip-element" data-tooltip="0">
+        <i class='bx bx-user'></i>
+      </a>
+      <div class="admin-user tooltip-element" data-tooltip="1">
+        <div class="admin-profile hide">
+          <img src="{% static 'image/face-1.png' %}" >
+          <div class="admin-info">
+            <h3>John Doe</h3>
+            <h5>admin</h5>
+          </div>
+        </div>
+        <a href="{% url 'login' %}" class="log-out">
+          <i class='bx bx-log-out'></i>
+        </a>
+      </div>
+      <div class="tooltip">
+        <span class="show">John</span>
+        <span>退出登录</span>
+      </div>
+    </div>
+  </nav>
+<main>
+  <h1 style="padding-top:10px">历史查询</h1>
+  <div >
+                        <h2 style="color:green"><label>年份</label>
+                        <select class="m-wrap"  style="width: 100px; padding: 3px 0">
+                                <option>2021</option>
+                                <option>2020</option>
+                                <option>2019</option>
+                                <option>2018</option>
+                                <option>2017</option>
+                            </select>
+                        <label>月份</label>
+                        <select class="m-wrap"  style="width: 100px; padding: 3px 0">
+                                <option>06</option>
+                                <option>07</option>
+                                <option>08</option>
+                                <option>09</option>
+                            </select>
+                          </h2>
+
+  </div>
+<a href="/download2" style="font-size:36px">
+  <button class="btn btn2">下载数据</button>
+</a>
+  <textarea class="textarea3"  cols="120" readonly ='readonly'>
+    {% for item in attack_method %}
+    {{item}}
+    {% endfor %}
+  </textarea>
+</main>
+    <script src="{% static 'js/homepage.js' %}"></script>
+</body>
+</html>

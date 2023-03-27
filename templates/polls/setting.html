@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商品异常数据分析平台</title>
+    <link rel="shortcut icon" href="/static/image/favicon.ico">
+
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/layout.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/elements.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/icons.css' %}" />
+    <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />
+
+
+
+    <link rel="stylesheet" href="{% static 'css/personal-info.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+  <nav>
+    <div class="sidebar-top">
+      <span class="shrink-btn">
+        <i class='bx bx-chevron-left'></i>
+      </span>
+      <img src="{% static 'image/uc.101.5aa46e13.jfif' %}" class="logo" alt="">
+      <h3 class="hide" style="color:white">分析平台</h3>
+    </div>
+
+    <div class="search">
+
+    </div>
+
+    <div class="sidebar-links">
+      <ul>
+        <li>
+        <div class="tab"></div>
+        </li>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="{% url 'index' %}"  data-active="0">
+            <div class="icon">
+              <i class='bx bx-tachometer'></i>
+              <i class='bx bxs-tachometer'></i>
+            </div>
+            <span class="link hide">主页</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="1">
+          <a href="{% url 'train' %}" data-active="1">
+            <div class="icon">
+              <i class='bx bx-folder'></i>
+              <i class='bx bxs-folder'></i>
+            </div>
+            <span class="link hide">数据上传</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="2">
+          <a href="{% url 'show_result' %}" data-active="2">
+            <div class="icon">
+              <i class='bx bx-message-square-detail'></i>
+              <i class='bx bxs-message-square-detail'></i>
+            </div>
+            <span class="link hide">预测结果</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="3">
+          <a href="{% url 'table' %}" data-active="3">
+            <div class="icon">
+              <i class='bx bx-bar-chart-square'></i>
+              <i class='bx bxs-bar-chart-square'></i>
+            </div>
+            <span class="link hide">可视图表</span>
+          </a>
+        </li>
+        <li>
+        <div class="tooltip">
+          <span class="show">首页</span>
+          <span>数据上传</span>
+          <span>预测结果</span>
+          <span>可视图表</span>
+        </div>
+        </li>
+      </ul>
+
+      <h4 class="hide"></h4>
+
+      <ul>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="{% url 'result' %}" data-active="4">
+            <div class="icon">
+              <i class='bx bx-notepad'></i>
+              <i class='bx bxs-notepad'></i>
+            </div>
+            <span class="link hide">历史查询</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="1">
+          <a href="{% url 'report' %}" data-active="5">
+            <div class="icon">
+              <i class='bx bx-help-circle'></i>
+              <i class='bx bxs-help-circle'></i>
+            </div>
+            <span class="link hide">反馈</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="2">
+          <a href="#" data-active="6" class="active">
+            <div class="icon">
+              <i class='bx bx-cog'></i>
+              <i class='bx bxs-cog'></i>
+            </div>
+            <span class="link hide">设置</span>
+          </a>
+        </li>
+        <li>
+        <div class="tooltip">
+          <span class="show">历史查询</span>
+          <span>反馈</span>
+          <span>设置</span>
+        </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="#" class="account tooltip-element" data-tooltip="0">
+        <i class='bx bx-user'></i>
+      </a>
+      <div class="admin-user tooltip-element" data-tooltip="1">
+        <div class="admin-profile hide">
+          <img src="{% static 'image/face-1.png' %}" >
+          <div class="admin-info" style="color:white">
+            <h3 style="color:white">John Doe</h3>
+            <h5>admin</h5>
+          </div>
+        </div>
+        <a href="{% url 'login' %}" class="log-out">
+          <i class='bx bx-log-out'></i>
+        </a>
+      </div>
+      <div class="tooltip">
+        <span class="show">John</span>
+        <span>退出登录</span>
+      </div>
+    </div>
+  </nav>
+
+  <main >
+    <div class="content wide-content" >
+      <div class="container-fluid">
+          <div class="settings-wrapper" id="pad-wrapper">
+              <!-- avatar column -->
+<!--              <div class="span3 avatar-box;float:middle" style="float:middle">-->
+<!--                  <div class="personal-image">-->
+<!--                      <img src="{% static 'image/face-1.png' %}" class="avatar img-circle" width="350" height="400" style="padding-top:60px"/>-->
+<!--                      <p><button>上传头像</button></p>-->
+<!--                      <input type="file" value="上传头像">-->
+<!--                  </div>-->
+<!--              </div>-->
+
+              <!-- edit form column -->
+              <div class="span7 personal-info">
+                
+                  <h5 class="personal-title">个人信息</h5>
+
+                  <form>
+                      <div class="field-box">
+                          <label>姓:</label>
+                          <input class="span5 inline-input" type="text" value="John" />
+                      </div>
+                      <div class="field-box">
+                          <label>名:</label>
+                          <input class="span5 inline-input" type="text" value="Doe" />
+                      </div> 
+                      <div class="field-box">
+                          <label>邮箱:</label>
+                          <input class="span5 inline-input" type="text" value="admin@admin.com" />
+                      </div>
+                      <div class="field-box">
+                          <label>用户名:</label>
+                          <input class="span5 inline-input" type="text" value="admin" />
+                      </div>
+                      <div class="field-box">
+                          <label>密码:</label>
+                          <input class="span5 inline-input" type="password" value="blablablabla" />
+                      </div>
+                      <div class="field-box">
+                          <label>确认密码:</label>
+                          <input class="span5 inline-input" type="password" value="blablablabla" />
+                      </div>
+                      <div class="span6 field-box actions" >
+                          <input type="button" class="btn-glow primary" value="保存" />
+                          <span>OR</span>
+                          <input type="reset" value="重置" class="reset" />
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+
+ <script src="{% static 'js/jquery-latest.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+  </main>
+
+  <script src="{% static 'js/homepage.js' %}"></script>
+</body>
+
+</html>
